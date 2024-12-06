@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片压缩工具</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- 顶部导航栏 -->
+    <header class="app-bar">
+      <h1>图片压缩工具</h1>
+    </header>
+
+    <main class="container">
+      <!-- 上传区域 -->
+      <div class="upload-container">
+        <div class="upload-area" id="dropZone">
+          <input
+            type="file"
+            id="fileInput"
+            accept="image/png,image/jpeg"
+            hidden
+          />
+          <i class="material-icons">cloud_upload</i>
+          <p>点击或拖拽图片到此处</p>
+          <button
+            class="upload-btn"
+            onclick="document.getElementById('fileInput').click()"
+          >
+            选择图片
+          </button>
+        </div>
+      </div>
+
+      <!-- 图片预览和压缩控制 -->
+      <div
+        class="preview-container"
+        id="previewContainer"
+        style="display: none"
+      >
+        <div class="compression-controls">
+          <div class="slider-container">
+            <div class="slider-header">
+              <label for="compressionRate"
+                >压缩质量: <span id="compressionValue">80%</span></label
+              >
+              <span class="compression-tip"
+                >数值越高图片质量越好，文件越大</span
+              >
+            </div>
+            <input
+              type="range"
+              id="compressionRate"
+              min="20"
+              max="100"
+              value="80"
+              step="1"
+            />
+            <div class="compression-info" id="compressionInfo"></div>
+          </div>
+        </div>
+
+        <div class="preview-images">
+          <div class="preview-card">
+            <div class="preview-header">
+              <h2>原图</h2>
+              <span class="file-size" id="originalSize"></span>
+            </div>
+            <div class="preview-image">
+              <img id="originalImage" alt="原图预览" />
+            </div>
+          </div>
+
+          <div class="preview-card">
+            <div class="preview-header">
+              <h2>压缩后</h2>
+              <span class="file-size" id="compressedSize"></span>
+            </div>
+            <div class="preview-image">
+              <img id="compressedImage" alt="压缩后预览" />
+            </div>
+            <button class="download-btn" id="downloadBtn">
+              <i class="material-icons">download</i>
+              下载压缩后的图片
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
